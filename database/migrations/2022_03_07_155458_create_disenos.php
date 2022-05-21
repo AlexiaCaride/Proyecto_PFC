@@ -15,19 +15,9 @@ class CreateDisenos extends Migration
     {
         Schema::create('disenos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
+            $table->string('imagen');
             $table->decimal('precio');
-            //Columnas para capas
-            $table->string('piel');
-            $table->string('pelo');
-            $table->string('ojos');
-            $table->string('nariz');
-            $table->string('boca');
-            $table->string('ropa');
-            $table->string('accesorio');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

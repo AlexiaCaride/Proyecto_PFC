@@ -16,16 +16,10 @@ class CreatePersonalizados extends Migration
         Schema::create('personalizados', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('diseno_id')->unsigned();
-            //Columnas para capas
-            $table->string('piel');
-            $table->string('pelo');
-            $table->string('ojos');
-            $table->string('nariz');
-            $table->string('boca');
-            $table->string('ropa');
-            $table->string('accesorio');
+            $table->bigInteger('user_id')->unsigned();
             $table->timestamps();
             $table->foreign('diseno_id')->references('id')->on('disenos')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

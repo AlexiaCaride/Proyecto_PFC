@@ -18,6 +18,7 @@ class CreateNovedades extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->string('titulo');
             $table->string('descripcion');
+            $table->string('ruta')->nulleable();
             $table->string('imagen');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -1,48 +1,114 @@
-<div class="bg-light pb-4">
-<nav class="navbar navbar-expand-lg navbar-light">
-    <div class="col-5">
-        <ul class="nav">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <li class="mx-5">
-                <a class="nav-link text-primary fs-3" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tienda</a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="/tienda/camisetas">Camisetas</a></li>
-                    <li><a class="dropdown-item" href="/tienda/tazas">Tazas</a></li>
-                    <li><a class="dropdown-item" href="/tienda/prints">Prints</a></li>
+<div class="elementos-menu bg-secondary d-flex m-0">
+    <div class="col-12 col-lg-12 col-sm-12">
+        <div class="row">
+            <div class="col-2 text-center  py-2">
+                <a href="/"><img class="img-fluid" src="{{ URL::asset('imagenes/logo.png') }}"></a>
+            </div>
+            <div class="col-10">
+                <ul class="nav mx-2 fw-bold">
+                    <div class="col-2 py-3 px-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white text-center" href="/nosotros">
+                                <h3 style="font-size: 150%" class="text-uppercase">{{ __('About us') }}</h3>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="col-2 py-3 px-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white text-center" href="/tienda">
+                                <h3 style="font-size: 150%" class="text-uppercase">{{ __('Shop') }}</h3>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="col-2 py-3 px-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white text-center" href="/crear">
+                                <h3 style="font-size: 150%" class="text-uppercase">{{ __('Create your design') }}</h3>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="col-2 py-3 px-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white text-center" href="/contacto">
+                                <h3 style="font-size: 150%" class="text-uppercase">{{ __('Commissions') }}</h3>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="col-2 py-3 px-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white text-center" href="/noticias">
+                                <h3 style="font-size: 150%" class="text-uppercase">{{ __('News') }}</h3>
+                            </a>
+                        </li>
+                    </div>
+                    <div class="col-1 text-center py-3 px-1">
+                        <li class="nav-item">
+                            <?php if (!Auth::check()) { ?>
+                            <!--Si no esta autenticado carga esta opcion-->
+                            <a class='nav-link' href='/login'><img
+                                    src="{{ URL::asset('imagenes/iconos/circle-user-solid.png') }}"></a>
+                            <?php
+                                    } else {
+                                        if(auth()->user()->tipo=='admin'){?>
+                            <!--Si esta autenticado y es admin carga esta opcion-->
+                            <a class='nav-link fs-3 text-white' id='navbarDropdownMenuLink' role='button'
+                                data-bs-toggle='dropdown' aria-expanded='false'><img
+                                    src="{{ URL::asset('imagenes/iconos/circle-user-solid.png') }}"></a>
+                            <ul class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
+                                <li>
+                                    <p class="fw-bold text-center">{{ __('Administration') }}</p>
+                                </li>
+                                <li><a class='dropdown-item' href='/escribir'>{{ __('Write') }}</a></li>
+                                <li><a class='dropdown-item' href='/administrar/usuarios'>{{ __('Users') }}</a>
+                                </li>
+                                <li><a class='dropdown-item' href='/administrar/productos'>{{ __('Products') }}</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class='dropdown-item'
+                                        href="/perfil/{{ auth()->id() }}">{{ __('My profile') }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+
+                            <?php
+                                        }else{
+                                        ?>
+                            <!--Si esta autenticado y es usuario carga esta opcion-->
+                            <a class='nav-link fs-3 text-white' id='navbarDropdownMenuLink' role='button'
+                                data-bs-toggle='dropdown' aria-expanded='false'><img
+                                    src="{{ URL::asset('imagenes/iconos/circle-user-solid.png') }}"></a>
+                            <ul class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
+                                <li><a class='dropdown-item'
+                                        href="/perfil/{{ auth()->id() }}">{{ __('My profile') }}</a></li>
+                                <li><a class='dropdown-item'
+                                        href='/cesta/{{ auth()->id() }}'>{{ __('Cart') }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
+                            </ul>
+                            <?php } 
+                                    }?>
+                        </li>
+                    </div>
+                    <div class="col-1 text-center py-4 px-1">
+                        <li class="nav-item">
+                            <a href='/cesta/{{ auth()->id() }}'><img
+                                    src="{{ URL::asset('imagenes/iconos/basket-shopping-solid.png') }}"></a>
+                        </li>
+                    </div>
                 </ul>
-            </li>
-            <ul class="nav nav-fill mx-5">
-                <li class="nav-item active">
-                    <a class="nav-link  text-primary fs-3" href="/novedades">Novedades</a>
-                </li>
-            </ul>
+            </div>
         </div>
-    </ul>
     </div>
-    <div class="col-2">
-            <a class="nav-link img-fluid" href="/home"><img src="{{URL::asset('imagenes/logo.png')}}" style="width: 200px;"></a>
-    </div>
-    <div class="col-5">
-        <ul class="nav  justify-content-end">
-            <li class="nav-item active mx-5">
-                <a class="nav-link fs-3 text-secondary" href="/crear">Crea tu diseño</a>
-            </li>
-            <?php if (!Auth::check()) {
-                echo "<li class='nav-item active mx-5'>
-                    <a class='nav-link fs-3 text-secondary' href='/login'>Acceder</a>
-                </li>" ;
-            }else{
-                echo "<div class='collapse navbar-collapse' id='navbarSupportedContent'>
-            <li class='mx-5'>
-                <a class='nav-link fs-3 text-secondary' id='navbarDropdownMenuLink' role='button' data-bs-toggle='dropdown' aria-expanded='false'>NombreUsuario</a>
-                <ul class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
-                    <li><a class='dropdown-item' href=''>Mi perfil</a></li>
-                    <li><a class='dropdown-item' href=''>Cesta</a></li>
-                    <li><a class='dropdown-item' href=''>Salir</a></li>
-                </ul>
-            </li>" ;
-            }?>
-        </ul>
-    </div>
-</nav>
 </div>

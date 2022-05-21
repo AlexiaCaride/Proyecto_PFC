@@ -45,13 +45,23 @@ class User extends Authenticatable
     public function perfil() {
         return $this->hasOne(Perfil::class);
        }
+    
+    //Relaciono la cesta con el usuario
+    public function producto() {
+        return $this->belongsToMany(Producto::class);
+       }
+    
     //Relaciono novedades con Usuario
     public function novedades(){
        return $this->hasMany(Novedades::class);
     }
     //Relaciono diseños con Usuario
-    public function disenos(){
-        return $this->hasMany(Disenos::class);
+    public function personalizados(){
+        return $this->hasMany(Personalizados::class);
+     }
+     //Relaciono contacto con Usuario
+    public function contacto(){
+        return $this->hasMany(Contacto::class);
      }
        
 }

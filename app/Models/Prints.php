@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Prints extends Model
 {
     use HasFactory;
-
+    protected $table = 'prints';
+    //Relaciono Prints con producto
     public function producto(){
         return $this->belongsTo(Producto::class);
     }
