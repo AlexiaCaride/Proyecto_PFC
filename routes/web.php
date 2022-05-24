@@ -105,9 +105,9 @@ Route::get('/cesta/borrar/{id}',[CestaController::class, 'borrar'])->middleware(
 
 //RUTAS DEL PIE DE PAGINA
 //Ruta que abre el cuestionario de contacto
-Route::get('/contacto',[ContactoController::class, 'contacto'])->middleware('auth');
+Route::get('/contacto',[ContactoController::class, 'contacto']);
 //Ruta que envia el mensaje
-Route::post('/contacto',[ContactoController::class, 'depurar'])->middleware('auth');
+Route::post('/contacto',[ContactoController::class, 'depurar']);
 //Ruta que abre la vista 'nosotros'
 Route::get('/nosotros',function(){
     return view('nosotros');

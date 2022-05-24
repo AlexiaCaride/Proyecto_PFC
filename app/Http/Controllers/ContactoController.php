@@ -15,13 +15,17 @@ class ContactoController extends Controller
     {
         //Valido el formulario
         $request->validate([
-            'asunto' => 'required|string|max:100',
+            'nombre' => 'required|string|max:100',
+            'apellidos' => 'required|string|max:100',
+            'email' => 'required|string|max:100',
             'mensaje' => 'required|string|max:500',
         ]);
         //Creo un nuemo mensaje d econtacto
             $mensaje = new Contactos;
             $mensaje->user_id = auth()->id();
-            $mensaje->asunto = $request->asunto;
+            $mensaje->nombre = $request->nombre;
+            $mensaje->apellidos = $request->apellidos;
+            $mensaje->email = $request->email;
             $mensaje->mensaje = $request->mensaje;
             $mensaje->save();
             

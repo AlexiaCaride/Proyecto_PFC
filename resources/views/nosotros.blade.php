@@ -3,10 +3,11 @@
     Sobre nosotros
 @endsection
 @section('corpo')
-    <div class="container text-center my-5">
-        <img class="img-fluid" src="{{ URL::asset('imagenes/BannerSobreNosotros.png') }}">
+<div class="container-fluid py-5" style="background-image: url({{ asset('imagenes/BannerSobreNosotros.png') }}); height: 535px">
+    <br class="mt-5">
+    <h1 class="text-white text-center py-5 my-5 display-1 text-uppercase">{{ __('About us')}}</h1>
     </div>
-    <div class="container d-flex justify-content-center">
+    <div class="container d-flex justify-content-center mt-5">
         <div class="col-10">
             <p class="fs-6 text-center">{{ __('InkSpell is a young company that seeks to revalue a small but great part of art that seems to be forgotten by society with less purchasing power. Nowadays, consuming music or cinema is practically within the reach of anyone, but what about drawing, painting or illustration?')}}
             </p>
