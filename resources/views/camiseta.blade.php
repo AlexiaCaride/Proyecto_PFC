@@ -40,7 +40,7 @@
                 <h2 class="text-primary">{{ $camiseta->imagen }}</h2>
                 <label for="talla" class="fs-4">{{ __('Size')}}</label>
                 <select class="form-select" name="talla" id="talla">
-                    <option value="seleccionar" disabled>{{ __('Select') }}</option>
+                    <option value="seleccionar">{{ __('Select') }}</option>
                     @php
                         $talla = '';
                     @endphp
@@ -58,7 +58,7 @@
                 </a>
                 <label for="color" class="mt-3 fs-4">Color</label>
                 <select class="form-select mb-3" name="color" id="color">
-                    <option value="seleccionar" disabled>{{ __('Select') }}</option>
+                    <option value="seleccionar">{{ __('Select') }}</option>
                     @foreach ($camisetas as $camiseta)
                         <option value="{{ $camiseta->color }}">{{ $camiseta->color }}</option>
                     @endforeach
@@ -68,7 +68,7 @@
                 @foreach ($camisetas as $camiseta)
                     <input type="hidden" name="id" id="id" value="{{ $camiseta->producto_id }}">
                 @endforeach
-                <input class="btn text-white rounded-pill px-4 py-2 bg-primary text-uppercase fs-5" type="submit"
+                <input class="btn text-white rounded-pill px-4 py-1 bg-primary text-uppercase fs-5" type="submit"
                     name="anadir" value="{{ __('Add to cart') }}">
                 @if (!empty(session()->has('error')))
                     <div class="alert alert-danger mt-2">

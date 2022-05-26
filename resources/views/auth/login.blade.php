@@ -3,11 +3,9 @@
 Login
 @endsection
 @section('corpo')
-<div style="height: 20%">
-</div>
 <div class="d-flex flex-row justify-content-center alig-items-center">
 <div class="card border-light border-2 mt-5 py-3 px-3 bg-light  shadow-lg" style="width: 18rem;">
-    <h1 class="text-primary text-center mb-4 fs-3 fw-bold">{{__('Login')}}</h1>
+    <h1 class="text-primary text-uppercase text-center mb-4 fs-3 fw-bold">{{__('Login')}}</h1>
         <div class="col-12 col-lg-12">
             <div class="d-flex flex-row justify-content-center alig-items-center">
                 <div class="row">
@@ -71,7 +69,7 @@ Login
             </div>
             <div class="col-12 col-lg-12 mt-2">
                 <div class="d-flex flex-row justify-content-center alig-items-center">
-                    <x-button class="btn btn-primary">
+                    <x-button class="btn text-white rounded-pill px-5 py-0 fs-5 bg-primary">
                         {{ __('Log in') }}
                     </x-button>
                     </form>
@@ -80,14 +78,12 @@ Login
         </div>
     </div>
 </div>
-<div class="col-12 col-lg-12 mt-2">
+<div class="col-12 col-lg-12 mt-2 mb-5">
     <div class="d-flex flex-row justify-content-center alig-items-center">
-        <a class="underline text-white fw-bold text-gray-600 hover:text-gray-900"
+        <a class="underline text-secondary fw-bold text-gray-600 hover:text-gray-900"
                 href="/register">
                 {{ __('No account yet?') }}
             </a>
     </div>
-</div>
-<div style="height: 5%">
 </div>
 @endsection

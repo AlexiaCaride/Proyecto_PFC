@@ -12,8 +12,14 @@ class NovedadesController extends Controller
     public function ver()
     {
         //Recupero las novedades en grupos de 3
-        $datos = DB::table('novedades')->orderBy('created_at', 'desc')->paginate(3);
+        $datos = DB::table('novedades')->orderBy('created_at', 'desc')->paginate(4);
         return view('novedades', ['datos' => $datos]);
+    }
+
+    public function noticia($id){
+        //Almaceno los datos de la noticia selecinada
+        $noticia = Novedad::find($id);
+        return view('noticia',array('noticia' => $noticia));
     }
 
     public function anadir()
@@ -24,7 +30,7 @@ class NovedadesController extends Controller
     public function anadido(Request $request){
         $request->validate([
             'titulo' => ['required', 'string', 'max:30'],
-            'editor1' => ['required', 'string', 'max:300'],
+            'editor1' => ['required', 'string', 'max:10000'],
         ]);
         //Crea un nuevo novedades
         $novedades = new Novedad;

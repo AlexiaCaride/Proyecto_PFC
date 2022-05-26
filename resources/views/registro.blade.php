@@ -3,15 +3,13 @@
     Registro
 @endsection
 @section('corpo')
-    <div style="height: 15%">
-    </div>
-    <div class="d-flex flex-row justify-content-center alig-items-center">
+    <div class="d-flex flex-row justify-content-center alig-items-center mt-2">
         <button type="button"
-            class="mt-3 btn btn-sm btn-primary rounded-pill text-white fs-4 fw-bold border-light border-3 shadow-lg">2</button>
+            class="mt-3 btn btn-sm btn-primary rounded-circle px-3 text-white fs-4 fw-bold ">2</button>
     </div>
     <div class="d-flex flex-row justify-content-center alig-items-center">
         <div class="card border-light border-2 mt-3 py-3 px-3 bg-light shadow-lg" style="width: 18rem;">
-            <h1 class="text-primary text-center fs-4 fw-bold">{{ __('Register') }}</h1>
+            <h1 class="text-primary text-center fs-4 text-uppercase fw-bold">{{ __('Register') }}</h1>
             <div class="col-12 col-lg-12">
                 <div class="d-flex flex-row justify-content-center alig-items-center">
                     <div class="row">
@@ -29,9 +27,9 @@
                             <div class="col-12 col-lg-12">
                                 <div class="d-flex flex-row justify-content-center alig-items-center mx-2">
                                     <div class="row">
-                                        <label for="nombre">{{ __('Name') }}</label>
+                                        <small><label class="text-uppercase" for="nombre">{{ __('Name') }}</label></small>
 
-                                        <input id="nombre" class="input-group-text" type="text" name="nombre" value=""
+                                        <input id="nombre" class="form-control border-primary" type="text" name="nombre" value=""
                                             required autofocus />
                                     </div>
                                 </div>
@@ -39,17 +37,17 @@
                             <div class="col-12 col-lg-12">
                                 <div class="d-flex flex-row justify-content-center alig-items-center mx-2">
                                     <div class="row">
-                                        <label for="apellidos">{{ __('Surname') }}</label>
+                                        <small><label class="text-uppercase" for="apellidos">{{ __('Surname') }}</label></small>
 
-                                        <input id="apellidos" class="input-group-text" type="text" name="apellidos" value=""
+                                        <input id="apellidos" class="form-control border-primary" type="text" name="apellidos" value=""
                                             required autofocus />
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12 col-lg-12">
-                                <div class="d-flex flex-row justify-content-center alig-items-center mx-2">
+                                <div class="d-flex flex-row justify-content-center alig-items-center mx-2 my-1">
                                     <div class="row">
-                                        <select required class="form-select form-select-lg mb-2 mt-2" id="provincia"
+                                        <select required class="form-select form-select form-control border-primary mb-2 mt-2" id="provincia"
                                             name="provincia" class="form-control">
                                             <option value="provincia">{{ __('Province') }}</option>
                                             <option value="Álava/Araba">Álava/Araba</option>
@@ -111,9 +109,9 @@
                             <div class="col-12 col-lg-12">
                                 <div class="d-flex flex-row justify-content-center alig-items-center mx-2">
                                     <div class="row">
-                                        <label for="ciudad">{{ __('City') }}</label>
+                                        <small><label class="text-uppercase" for="ciudad">{{ __('City') }}</label></small>
 
-                                        <input id="ciudad" class="input-group-text" type="text" name="ciudad" value=""
+                                        <input id="ciudad" class="form-control border-primary" type="text" name="ciudad" value=""
                                             required autofocus />
                                     </div>
                                 </div>
@@ -121,9 +119,9 @@
                             <div class="col-12 col-lg-12">
                                 <div class="d-flex flex-row justify-content-center alig-items-center mx-2">
                                     <div class="row">
-                                        <label for="direccion">{{ __('Address') }}</label>
+                                        <small><label class="text-uppercase" for="direccion">{{ __('Address') }}</label></small>
 
-                                        <input id="direccion" class="input-group-text" type="text" name="direccion" value=""
+                                        <input id="direccion" class="form-control border-primary" type="text" name="direccion" value=""
                                             required autofocus />
                                     </div>
                                 </div>
@@ -131,9 +129,9 @@
                             <div class="col-12 col-lg-12">
                                 <div class="d-flex flex-row justify-content-center alig-items-center mx-2">
                                     <div class="row">
-                                        <label for="cPostal">{{ __('Postal Code') }}</label>
+                                        <small><label class="text-uppercase" for="cPostal">{{ __('Postal Code') }}</label></small>
 
-                                        <input id="cPostal" class="input-group-text" type="text" name="cPostal" value=""
+                                        <input id="cPostal" class="form-control border-primary" type="text" name="cPostal" value=""
                                             required autofocus />
                                     </div>
                                 </div>
@@ -141,7 +139,7 @@
                             <div class="col-12 col-lg-12">
                                 <div class="d-flex flex-row justify-content-center alig-items-center mx-2 mt-2">
                                     <div class="row">
-                                        <input type="submit" class="btn btn-primary mt-2 text-white" name="registrar"
+                                        <input type="submit" class="btn text-white rounded-pill px-5 py-0 fs-5 bg-primary" name="registrar"
                                             value="{{ __('Register') }}">
                                     </div>
                                 </div>

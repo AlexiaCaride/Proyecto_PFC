@@ -62,6 +62,8 @@ Route::post('/tienda/prints/{img}',[CestaController::class, 'anadirPrint'])->mid
 //RUTAS DE NOTICIAS
 //Ruta que lleva a las novedades de la tienda
 Route::get('/noticias',[NovedadesController::class, 'ver']);
+//Ruta que lleva a la noticia selecionada
+Route::get('/noticias/{id}',[NovedadesController::class, 'noticia']);
 
 //RUTAS DE ADMINISTRADORES
 //Ruta paa escribir el articulo

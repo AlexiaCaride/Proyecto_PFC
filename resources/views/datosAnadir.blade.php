@@ -1,24 +1,17 @@
 @extends('layouts.master')
 @section('titulo')
-Añadir
+    Añadir
 @endsection
 @section('corpo')
-<div style="height: 20%">
-</div>
-<div class="d-flex flex-row justify-content-center alig-items-center">
-    <div class="card border-light border-2 mt-5 py-3 bg-light  shadow-lg" style="width: 18rem">
+    <div class="container my-5 py-5">
         <div class="col-12 col-lg-12">
-            <div class="d-flex flex-row justify-content-center align-items-center">
-                <div class="row">
-                    <div class="m-3">
-                        <p>{{__('Successfully added novelty')}}</p>
-                        <button class="btn btn-primary text-white"><a class="text-white text-decoration-none" href="/">{{__('Go back')}}</a></button>
-                    </div>
+            <h2 class="text-uppercase text-center">{{ __('Successfully added novelty') }}</h2>
+            <div class="col-12">
+                <div class="d-flex justify-content-center my-3">
+                    <button class="btn rounded-pill btn-primary text-uppercase text-white fs-4 px-4 py-0"><a
+                            class="text-white text-decoration-none" href="/">{{ __('Go back') }}</a></button>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div style="height: 20%">
-</div>
 @endsection

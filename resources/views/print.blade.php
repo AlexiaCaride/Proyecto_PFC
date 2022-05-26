@@ -50,7 +50,7 @@
                     @foreach ($prints as $print)
                         <input type="hidden" name="id" id="id" value="{{ $print->producto_id }}">
                     @endforeach
-                    <input class="btn text-white rounded-pill px-4 py-2 bg-primary text-uppercase fs-5" type="submit"
+                    <input class="btn text-white rounded-pill px-4 py-1 bg-primary text-uppercase fs-5" type="submit"
                         name="anadir" value="{{ __('Add to cart') }}">
                     @if (!empty(session()->has('error')))
                         <div class="alert alert-danger mt-2">
