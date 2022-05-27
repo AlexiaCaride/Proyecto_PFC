@@ -3,13 +3,13 @@
     Administración
 @endsection
 @section('corpo')
-    <div style="height: 10%">
+    <div class="container-fluid py-1"
+        style="background-image: url({{ asset('imagenes/miniBanner2.png') }}); height: 200px">
+        <br class="mt-5">
+        <h1 class="text-white text-center display-3 text-uppercase">{{ __('Users') }}</h1>
     </div>
-    <div class="container my-5 py-5 px-5 bg-light shadow-sm">
+    <div class="container my-5 px-5">
         <div class="col-12 col-lg-12 col-sm-12">
-            <div class="row">
-                <h1 class="fw-bold mb-4 text-primary">{{ __('Users') }}</h1>
-            </div>
             <div class="row">
                 <div class="col-12">
                     <div class="d-flex justify-content-center px-2">
@@ -36,7 +36,7 @@
                                             <td>{{ $usuario->tipo }}</td>
                                             <td>{{ $usuario->name }}</td>
                                             <td>{{ $usuario->email }}</td>
-                                            <td><button class="btn btn-primary"><a class="text-white text-decoration-none"
+                                            <td><button class="btn text-white rounded-pill px-3 py-0 bg-primary text-uppercase"><a class="text-white text-decoration-none"
                                                         href="/administrar/usuarios/{{ $usuario->id }}">{{ __('Delete') }}</a></button>
                                             </td>
                                         </tr>

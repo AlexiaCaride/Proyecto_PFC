@@ -115,6 +115,24 @@ Route::get('/nosotros',function(){
     return view('nosotros');
 });
 
+//RUTAS DE POLÍTICAS
+//Privacidad
+Route::get('/politica-privacidad',function(){
+    return view('politicaprivacidad');
+});
+//Cookies
+Route::get('/politica-cookies',function(){
+    return view('politicacookies');
+});
+//Aviso legal
+Route::get('/aviso-legal',function(){
+    return view('avisolegal');
+});
+//Términos de compra
+Route::get('/terminos-compra',function(){
+    return view('terminoscompra');
+});
+
 //RUTAS DE REGISTRO
 //Ruta que abre el registro de perfil
 Route::get('/registro',function(){

@@ -186,6 +186,6 @@ class CestaController extends Controller
         //Borro la cesta del usuario
         $cesta = DB::table('cesta')->where('user_id', '=', auth()->id());
         $cesta->delete();
-        return view('pagado');
+        return view('pago');
     }
 }

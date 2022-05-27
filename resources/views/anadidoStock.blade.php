@@ -3,26 +3,23 @@
     Administración
 @endsection
 @section('corpo')
-    <div style="height: 25%">
+    <div class="container-fluid py-1"
+        style="background-image: url({{ asset('imagenes/miniBanner2.png') }}); height: 200px">
+        <br class="mt-5">
+        <h1 class="text-white text-center display-3 text-uppercase">{{ __('Products') }}</h1>
     </div>
-    <div class="d-flex flex-row justify-content-center alig-items-center">
-        <div class="card border-light border-2 mt-5 py-3 px-3 bg-light shadow-lg" style="width: 18rem;">
-            <div class="col-12 col-lg-12">
-                <div class="d-flex flex-row justify-content-center alig-items-center">
-                    <div class="row">
-                        <div class="mb-2">
-                            <h2 class="text-primary text-center fs-4 fw-bold">{{__('Successfully added')}}</h2>
-                        </div>
-                        <div class="mx-1">
-                            <div class="d-flex flex-row justify-content-center align-items-center">
-                            <button class="btn btn-primary"><a class="text-white text-decoration-none" href="/administrar/productos">{{__('Go back')}}</a></button>
-                            </div>
-                        </div>
+    <div class="container my-5">
+        <div class="col-12 col-lg-12">
+            <div class="my-3">
+                <p class="text-secondary text-center fs-4">{{ __('Successfully added') }}</p>
+                <div class="d-flex justify-content-center">
+                    <div class="d-flex flex-row justify-content-center align-items-center">
+                        <button class="btn rounded-pill btn-primary text-uppercase text-white fs-4 px-4 py-0"><a
+                                class="text-white text-decoration-none"
+                                href="/administrar/productos">{{ __('Go back') }}</a></button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div style="height: 25%">
     </div>
 @endsection

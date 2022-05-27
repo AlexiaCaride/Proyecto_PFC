@@ -1,26 +1,23 @@
 @extends('layouts.master')
 @section('titulo')
-Mis datos
+    Mis datos
 @endsection
 @section('corpo')
-<div style="height: 10%">
-</div>
-<div class="d-flex flex-row justify-content-center alig-items-center">
-    <div class="card border-light border-2 mt-5 py-3 px-3 bg-light  shadow-lg" style="width: 18rem;">
-        <h1 class="text-primary text-center mb-4 fs-3 fw-bold">{{__('My data')}}</h1>
+    <div class="container-fluid py-1"
+        style="background-image: url({{ asset('imagenes/miniBanner2.png') }}); height: 200px">
+        <br class="mt-5">
+        <h1 class="text-white text-center display-3 text-uppercase">{{ __('Profile') }}</h1>
+    </div>
+    <div class="container my-5">
         <div class="col-12 col-lg-12">
-            <div class="d-flex flex-row justify-content-center alig-items-center">
-                <div class="row">
-                        <p class="fw-bold text-center">{{__('Successful edition')}}</p>
-                    <div class="d-flex flex-row justify-content-center alig-items-center mt-3">
-                        <a class="text-decoration-none" href="/perfil/{{auth()->id()}}"><button class="btn btn-primary text-white">
-                                {{__('Back to my profile')}}
-                            </button></a>
-                    </div>
+            <div class="my-3">
+                <p class="text-center fs-4 mb-5">{{ __('Successful edition') }}</p>
+                <div class="d-flex justify-content-center">
+                    <button class="btn rounded-pill btn-primary text-uppercase text-white fs-4 px-4 py-0"><a
+                            class="text-white text-decoration-none"
+                            href="/perfil/{{ auth()->id() }}">{{ __('Back to my profile') }}</a></button>
                 </div>
             </div>
         </div>
     </div>
-    <div style="height: 5%">
-    </div>
-    @endsection
+@endsection

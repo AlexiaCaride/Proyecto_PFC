@@ -3,13 +3,13 @@
     Administración
 @endsection
 @section('corpo')
-    <div style="height: 10%">
-    </div>
-    <div class="container my-5 py-5 px-5 bg-light shadow-sm">
+<div class="container-fluid py-1"
+style="background-image: url({{ asset('imagenes/miniBanner2.png') }}); height: 200px">
+<br class="mt-5">
+<h1 class="text-white text-center display-3 text-uppercase">{{ __('Products') }}</h1>
+</div>
+    <<div class="container my-5 px-5">
         <div class="col-12 col-lg-12 col-sm-12">
-            <div class="row">
-                <h1 class="fw-bold mb-4 text-primary">{{ __('Products') }}</h1>
-            </div>
             <div class="row">
                 <div class="col-12">
                     <div class="d-flex justify-content-center px-2">
@@ -33,10 +33,10 @@
                                             <td>{{ $producto->imagen }}</td>
                                             <td>{{ $producto->stock }}</td>
                                             <td>{{ $producto->precio }}</td>
-                                            <td><input class="input-group-text" type="number" min=0 name="anadir" value=""
+                                            <td><input class="form-control border-primary bg-light" type="number" min=0 name="anadir" value=""
                                                     size="5%"></td>
                                             <td><input type="submit" name="enviar" value="{{ __('Add') }}"
-                                                    class="btn btn-primary text-white"></td>
+                                                class="btn text-white rounded-pill px-3 py-0 bg-primary text-uppercase"></td>
                                         </tr>
                                     </form>
                                 @endforeach
