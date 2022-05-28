@@ -14,10 +14,12 @@
 </head>
 
 <body style="background-color: #fcf5f6">
+    
     @include('layouts.cabecera')
     @include('layouts.menu')
     @yield('corpo')
     @include('layouts.pie')
+    
 </body>
 
 </html>
