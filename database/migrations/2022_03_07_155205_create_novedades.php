@@ -17,7 +17,7 @@ class CreateNovedades extends Migration
             $table->id();
             $table->bigInteger('user_id')->unsigned();
             $table->string('titulo');
-            $table->string('descripcion');
+            $table->string('descripcion',10000);
             $table->string('ruta')->nulleable();
             $table->string('imagen');
             $table->timestamps();

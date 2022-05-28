@@ -35,7 +35,7 @@ Route::middleware(LocaleCookieMiddleware::class)->group(function(){
 //Ruta que lleva al index de la página
 Route::get('/', [TiendaController::class, 'index']);
 //Ruta que lleva al index de la página despues de registrarse
-Route::get('/home', [TiendaController::class, 'index']);
+Route::get('/home', [TiendaController::class, 'index'])->name('home');
 
 //Ruta para el multiidioma.
 Route::get('/locale/{locale}',function($locale){
@@ -100,10 +100,18 @@ Route::post('/crear/anadir/{id}',[CestaController::class, 'anadirDiseno'])->midd
 //RUTAS DE LA CESTA
 //Ruta que muestra la cesta
 Route::get('/cesta/{id}',[CestaController::class, 'ver'])->middleware('auth');
-//Ruta que paga el pedido
+//Ruta que confirma el pedido
 Route::post('/cesta/{id}',[CestaController::class, 'pagar'])->middleware('auth');
 //Ruta que borra articulos de la cesta
 Route::get('/cesta/borrar/{id}',[CestaController::class, 'borrar'])->middleware('auth');
+//Ruta de metodo de pago
+Route::get('/pago',function(){
+    return view('pago');
+})->name('pago')->middleware('auth');
+//Ruta que confirma los datos de la tarjeta
+Route::post('/pago',function(){
+    return redirect()->route('home');
+})->middleware('auth');
 
 //RUTAS DEL PIE DE PAGINA
 //Ruta que abre el cuestionario de contacto
