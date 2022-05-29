@@ -3,6 +3,28 @@
     Ver
 @endsection
 @section('corpo')
+    <script>
+        function colorCamiseta() {
+            var color = document.getElementById("color").value;
+            var cadena = document.getElementById("camiseta").src;
+            if (color == "negro") {
+                var blanco = cadena.indexOf("blanco");
+                if (blanco >= 0) {
+                    var result = cadena.replace("blanco", "negro");
+                    document.getElementById("camiseta").src = result;
+                }
+            }
+            if (color == "blanco") {
+                var negro = cadena.indexOf("negro");
+                if (negro >= 0) {
+                    var result = cadena.replace("negro", "blanco");
+                    document.getElementById("camiseta").src = result;
+                }
+            }
+
+
+        }
+    </script>
     @foreach ($camisetas as $camiseta)
         @if ($loop->first)
             <div class="d-flex flex-row justify-content-center alig-items-center">
@@ -22,13 +44,14 @@
                             </div>
                             <div class="col-6 col-sm-12 col-lg-6">
                                 <div class="text-center mt-5">
-                                    <img src="{{ URL::asset('imagenes/' . $camiseta->imagen . '/' . $camiseta->color . '.jpg') }}"
+                                    <img id="camiseta"
+                                        src="{{ URL::asset('productos/' . $camiseta->imagen . '/blanco.jpg') }}"
                                         class="img-fluid img-thumbnail" style="width: 350px">
                                     <p class="fs-3 fw-bold mx-5 px-5 mt-2">{{ $camiseta->precio }}€</p>
                                 </div>
                             </div>
-            @endif
-        @endforeach
+        @endif
+    @endforeach
     <div class="col-6 col-sm-12 col-lg-6">
         <div class="d-flex row justify-content-center mt-2 mb-2 mx-5">
             @foreach ($camisetas as $camiseta)
@@ -38,16 +61,16 @@
             <div class="my-4">
                 <br>
                 <h2 class="text-primary">{{ $camiseta->imagen }}</h2>
-                <label for="talla" class="fs-4">{{ __('Size')}}</label>
+                <label for="talla" class="fs-4">{{ __('Size') }}</label>
                 <select class="form-select" name="talla" id="talla">
                     <option value="seleccionar">{{ __('Select') }}</option>
                     @php
-                        $talla = '';
+                        $talla = [];
                     @endphp
                     @foreach ($camisetas as $camiseta)
-                        @if ($camiseta->talla != $talla)
+                        @if (!in_array($camiseta->talla, $talla))
                             @php
-                                $talla = $camiseta->talla;
+                                array_push($talla, $camiseta->talla);
                             @endphp
                             <option value="{{ $camiseta->talla }}">{{ $camiseta->talla }}</option>
                         @endif
@@ -57,10 +80,19 @@
                     <p class="text-center">¿Dudas con la talla?<p>
                 </a>
                 <label for="color" class="mt-3 fs-4">Color</label>
-                <select class="form-select mb-3" name="color" id="color">
+                <select class="form-select mb-3" name="color" id="color" onchange="colorCamiseta()">
                     <option value="seleccionar">{{ __('Select') }}</option>
+                    @php
+                        $color = [];
+                    @endphp
                     @foreach ($camisetas as $camiseta)
-                        <option value="{{ $camiseta->color }}">{{ $camiseta->color }}</option>
+                        @if (!in_array($camiseta->color, $color))
+                            @php
+                                array_push($color, $camiseta->color);
+                            @endphp
+                            <option  value="{{ $camiseta->color }}">{{ $camiseta->color }}
+                            </option>
+                        @endif
                     @endforeach
                 </select>
             </div>

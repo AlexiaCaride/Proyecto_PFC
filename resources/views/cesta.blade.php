@@ -43,7 +43,7 @@
                             <tbody>
                                 @foreach ($productos as $producto)
                                     <tr>
-                                        <td><img src="{{ URL::asset('imagenes/' . $producto->imagen . '.jpg') }}"
+                                        <td><img src="{{ URL::asset('productos/Ilustraciones/' . $producto->imagen . '.png') }}"
                                                 class="img-fluid img-thumbnail" width="100px"></td>
                                         <td class="align-middle text-center"><input type="number"
                                                 class="form-control border-primary bg-light" style="width: 75px"

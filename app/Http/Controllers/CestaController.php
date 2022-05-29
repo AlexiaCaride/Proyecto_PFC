@@ -22,33 +22,32 @@ class CestaController extends Controller
         //Las almaceno en variables
         $color = $request->input('color');
         $talla = $request->input('talla');
-        $producto_id = $request->input('id');
-        //Selecciono todos los id que coincida la imagen y el id de producto
-        $imagen = DB::select("select id from productos where imagen = ? AND id = ?", [$img, $producto_id]);
+        //Selecciono todos los id que coincida la imagen
+        $imagen = DB::select("select id from productos where imagen = ?", [$img]);
         //Creo una variable que me almacene los errores
         $error = "";
         //Recorro la coleccion de imagen
         foreach ($imagen as $id) {
-            //Almaceno todos los productos en los que el color, talla e id coincidan
-            $producto = DB::select("select producto_id from camisetas where color = ? AND talla = ? AND producto_id = ?", [$color, $talla, $id->id]);
+            //Almaceno todos los productos en los que el color, talla coincidan
+            $producto = DB::select("select producto_id from camisetas where color = ? AND talla = ? AND producto_id =? ", [$color, $talla, $id->id]);
             //Almaceno el stock cuando el color, talla e id coincidan
             $stock = Producto::join("camisetas", "camisetas.producto_id", "=", "productos.id")->select('stock')->where('camisetas.color', $color)->where('camisetas.talla', $talla)->where('camisetas.producto_id', $id->id)->get();
             //Entra en el bucle si producto no está vacio, si no, almacena un error
             if (!empty($producto[0]->producto_id)) {
                 //Almaceno los datos de la cesta que coincidan con el id de usuario y el id de producto
                 $compruebaCesta = DB::select("select user_id, producto_id, cantidad from cesta where user_id = ? AND producto_id = ?", [auth()->id(), $producto[0]->producto_id]);
-                //Si es true almacena la cantidad mas 1
                 if ($compruebaCesta) {
+                    //Si es true almacena la cantidad mas 1
                     $cantidad = $compruebaCesta[0]->cantidad + 1;
-                    //Si stock es menor o igual a cantidad hace un update donde pone la nueva cantidad, si almacena el error
+                    //Si el stock es mayor que 0 inserta en la cesta el nuevo producto
                     if ($cantidad <= $stock[0]->stock) {
                         DB::update("update cesta set cantidad= ? where user_id = ? AND producto_id = ?", [$cantidad, auth()->id(), $producto[0]->producto_id]);
                     } else $error = "No hay suficiente stock";
-                    //Si el stock es mayor que 0 inserta en la cesta el nuevo producto
+                //Si el stock es mayor que 0 inserta en la cesta el nuevo producto
                 } elseif ($stock[0]->stock > 0) {
                     DB::insert('insert into cesta (user_id, producto_id, cantidad) values (?, ?, 1)', [auth()->id(), $producto[0]->producto_id]);
-                }
-            } else $error = "No hay suficiente stock";
+                } else $error = "No hay suficiente stock";
+            }
         }
         //Si el error está vacio vuelve a la página anterior, si no al volver manda el mensaje de error
         if ($error == "") {
@@ -64,9 +63,8 @@ class CestaController extends Controller
         ]);
         //Las almaceno en variables
         $tamano = $request->input('tamano');
-        $producto_id = $request->input('id');
         //Selecciono todos los id que coincida la imagen y el id de producto
-        $imagen = DB::select("select id from productos where imagen = ? AND id = ?", [$img, $producto_id]);
+        $imagen = DB::select("select id from productos where imagen = ?", [$img]);
         //Creo una variable que me almacene los errores
         $error = "";
         //Recorro la coleccion de imagen

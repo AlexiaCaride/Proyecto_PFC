@@ -3,6 +3,16 @@
     Ver
 @endsection
 @section('corpo')
+    <script>
+        function tamanoPrecio() {
+            var tamano = document.getElementById("tamano").value;
+            if (tamano == "A5") {
+                document.getElementById("precio").innerHTML = "5.00€";
+            } else if (tamano == "A3") {
+                document.getElementById("precio").innerHTML = "15.00€";
+            } else document.getElementById("precio").innerHTML = "10.00€";
+        }
+    </script>
     @foreach ($prints as $print)
         @if ($loop->first)
             <div class="d-flex flex-row justify-content-center alig-items-center">
@@ -22,9 +32,9 @@
                             </div>
                             <div class="col-6 col-sm-12 col-lg-6">
                                 <div class="text-center mt-5">
-                                    <img src="{{ URL::asset('imagenes/' . $print->imagen . '.jpg') }}"
+                                    <img src="{{ URL::asset('productos/' . $print->imagen . '/hoja.jpg') }}"
                                         class="img-fluid" style="width: 350px">
-                                    <p class="fs-3 fw-bold mx-5 px-5 mt-2">{{ $print->precio }}€</p>
+                                    <p id="precio" class="fs-3 fw-bold mx-5 px-5 mt-2">10.00€</p>
                                 </div>
                             </div>
         @endif
@@ -37,10 +47,10 @@
             @csrf
             <div class="my-4">
                 <br>
-                <h2 class="text-primary">{{ $print->imagen }}</h2>
+                <h2 class="text-primary text-uppecase">{{ $print->imagen }}</h2>
                 <p>{{ $print->descripcion }}</p>
                 <label for="tamano" class="fs-4 mt-3">{{ __('Dimensions') }}</label>
-                <select class="form-select mb-4" name="tamano" id="tamano">
+                <select class="form-select mb-4" name="tamano" id="tamano" onchange="tamanoPrecio()">
                     <option value="seleccionar">{{ __('Select') }}</option>
                     @foreach ($prints as $print)
                         <option value="{{ $print->tamano }}">{{ $print->tamano }}</option>
