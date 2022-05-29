@@ -3,65 +3,35 @@
     Diseños
 @endsection
 @section('corpo')
-    <div style="height: 10%">
-    </div>
-    <div class="container my-5 py-5 px-5 bg-light shadow-sm">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <div class="col-12 col-lg-12 col-sm-12">
-            <div class="row">
-                <div class="col-12">
-                    <div class="row my-3">
-                        <div class="col-4"></div>
-                        <div class="col-4">
-                            <form method="POST" action="/crear/{{ $diseno->id }}">
-                                @csrf
-                                @php
-                                    $tipo="";
-                                @endphp
-                                @foreach ($capas as $capa)
-                                @if ($capa->tipo!=$tipo)
-                                    @php
-                                        $tipo=$capa->tipo;
-                                    @endphp
-                                    <input type="hidden" name="ruta[]" value="{{ $capa->diseno_id . '/' . $capa->tipo }}">
-                                @endif
-                                @endforeach
-                                <div class="d-flex justify-content-center mb-5">
-                                    <select class="form-select form-select-lg mb-3" name="fondo" id="fondo">
-                                        <option value="fondo">{{ __('Background') }}</option>
-                                        @foreach ($capas as $capa)
-                                            @if ($capa->tipo == 'fondo')
-                                                <option value="{{ $capa->nombre }}">{{ $capa->nombre }}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="d-flex justify-content-center mb-5">
-                                    <select class="form-select form-select-lg mb-3" name="imagen" id="imagen">
-                                        <option value="imagen">{{ __('Image') }}</option>
-                                        @foreach ($capas as $capa)
-                                            @if ($capa->tipo == 'imagen')
-                                                <option value="{{ $capa->nombre }}">{{ $capa->nombre }}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="d-flex justify-content-center mb-5">
-                                    <input class="input-group btn btn-primary text-white" type="submit" name="resultado"
-                                        value="{{ __('View result') }}">
-                                </div>
-                            </form>
-                            <p class="fs-3 fw-bold mx-5 px-5 mt-2">{{$diseno->precio}}€</p>
+    <div class="container my-4">
+        <div class="d-flex justify-content-center">
+            <div class="col-8  border border-primary rounded tarjeta">
+                <div class="row">
+                    <div class="col-12 my-4" style="height: 500px">
+                        <div class="position-absolute top-50 start-50 translate-middle">
+                            <img src="" id="accesorio" width="500px" height="500px">
                         </div>
-                        <div class="col-4"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">
+                            <p class="lh-1 mx-4" id="accesorios">Accesorios</p>
+                            <p class="lh-1 mx-4" id="colorojos">Ojos</p>
+                            <p class="lh-1 mx-4" id="pelo">Pelo</p>
+                            <p class="lh-1 mx-4" id="piel">Piel</p>
+                        </div>
+                        <div class="col-10">
+                            <div class="d-flex justify-content-end">
+                                @foreach ($capas as $capa)
+                                    @if ($capa->tipo == 'accesorio')
+                                        <button class="btn border-primary mx-2"
+                                            onclick="document.getElementById('{{ $capa->tipo }}').src='=productos/personalizado/{{ $capa->tipo }}/{{ $capa->nombre }}.png'">
+                                            <img src={{ URL::asset('productos/personalizado/' . $capa->tipo . '/' . $capa->nombre . '.png') }}
+                                                width="75px">
+                                        </button>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

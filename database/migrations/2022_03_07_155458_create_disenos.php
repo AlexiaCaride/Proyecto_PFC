@@ -16,7 +16,6 @@ class CreateDisenos extends Migration
         Schema::create('disenos', function (Blueprint $table) {
             $table->id();
             $table->string('imagen');
-            $table->decimal('precio');
             $table->timestamps();
         });
     }

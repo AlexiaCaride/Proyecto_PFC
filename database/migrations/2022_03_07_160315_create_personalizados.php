@@ -19,6 +19,7 @@ class CreatePersonalizados extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->string('talla');
             $table->string('color');
+            $table->decimal('precio');
             $table->string('tamano');
             $table->timestamps();
             $table->foreign('diseno_id')->references('id')->on('disenos')->onDelete('cascade');

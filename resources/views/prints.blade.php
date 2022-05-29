@@ -18,8 +18,8 @@
                         <div class="card text-center m-4 border-0" style="width: 18rem;">
                             <img src="{{ URL::asset('productos/' . $producto->imagen . '/hoja.jpg') }}" class="card-img-top">
                             <div class="card-body">
-                                <a href="/tienda/prints/{{ $producto->imagen }}"
-                                    class="btn text-white rounded-pill px-5 py-0 fs-5 bg-primary">{{ __('More information')}}</a>
+                                <a href="/tienda/prints/{{ $producto->imagen }}">
+                                    <button class="btn text-white rounded-pill px-5 py-0 fs-6 bg-primary text-uppercase">{{ __('More information')}}</button></a>
                             </div>
                         </div>
                     </div>
