@@ -27,15 +27,11 @@ class DisenosController extends Controller
 
     public function resultado($id,Request $request)
     {
-        //Valido el formulario
-        $request->validate([
-            'fondo' => ['required', Rule::notIn('fondo')],
-            'imagen' => ['required', Rule::notIn('imagen')],
-        ]);
         //Recupero los request y los mando como un solo array
-        $ruta = $request->input('ruta');
-        $fondo = $request->input('fondo');
-        $imagen = $request->input('imagen');
-        return view('resultado',['ruta'=>$ruta,'fondo'=>$fondo,'imagen'=>$imagen,'id'=>$id]);
+        $accesorio = $request->input('accesorio');
+        $ojos = $request->input('ojos');
+        $pelo = $request->input('pelo');
+        $piel = $request->input('piel');
+        return view('resultado',['accesorio'=>$accesorio,'ojos'=>$ojos,'pelo'=>$pelo, 'piel'=>$piel,'id'=>$id]);
     }
 }
