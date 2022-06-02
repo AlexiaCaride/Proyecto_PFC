@@ -63,6 +63,8 @@
                                 </li>
                                 <li><a class='dropdown-item' href='/administrar/productos'>{{ __('Products') }}</a>
                                 </li>
+                                <li><a class='dropdown-item' href='/administrar/contacto'>{{ __('Messages') }}</a>
+                                </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

@@ -97,23 +97,48 @@ class CestaController extends Controller
     public function anadirDiseno($id, Request $request)
     {
         //Recupero las capas de el diseño
-        $imagen = $request->input('imagen');
-        $fondo = $request->input('fondo');
+        $accesorio = $request->input('accesorio');
+        $arrayAccesorio = explode("/", $accesorio);
+        $ojos = $request->input('ojos');
+        $arrayOjos= explode("/", $ojos);
+        $pelo = $request->input('pelo');
+        $arrayPelo = explode("/", $pelo);
+        $piel = $request->input('piel');
+        $arrayPiel = explode("/", $piel);
+        if($request->has('camiseta')){
+                $camiseta=$request->input('camiseta');
+                $datos= explode(",", $camiseta[0]);
+        }elseif($request->has('lamina')){
+                $lamina=$request->input('lamina');
+                $datos= explode(",", $lamina[0]);
+        }
         //Recupero el id de la capa cuando coincida el diseño, el tipo y el nombre
-        $capaF = DB::select("select id from capas where diseno_id = ? AND tipo = ? AND nombre = ?", [$id, 'fondo', $fondo]);
-        $capaI = DB::select("select id from capas where diseno_id = ? AND tipo = ? AND nombre = ?", [$id, 'imagen', $imagen]);
+        $capaAccesorio = DB::select("select id from capas where diseno_id = ? AND tipo = ? AND nombre = ?", [$id, $arrayAccesorio[0], $arrayAccesorio[1]]);
+        $capaOjos = DB::select("select id from capas where diseno_id = ? AND tipo = ? AND nombre = ?", [$id, $arrayOjos[0], $arrayOjos[1]]);
+        $capaPelo = DB::select("select id from capas where diseno_id = ? AND tipo = ? AND nombre = ?", [$id, $arrayPelo[0], $arrayPelo[1]]);
+        $capaPiel = DB::select("select id from capas where diseno_id = ? AND tipo = ? AND nombre = ?", [$id, $arrayPiel[0], $arrayPiel[1]]);
         //Creo un nuevo Personalizado y le meto los datos
         $personalizado = new Personalizados();
         $personalizado->diseno_id = $id;
         $personalizado->user_id = auth()->id();
+        if($datos[0]=="Camiseta"){
+            $personalizado->talla = $datos[1];
+            $personalizado->color = $datos[2];
+            $personalizado->precio = $datos[3];
+        }else{
+            $personalizado->tamano = $datos[1];
+            $personalizado->precio = $datos[2];
+        }
         $personalizado->save();
-        $personalizado->capas()->attach($capaF[0]->id);
-        $personalizado->capas()->attach($capaI[0]->id);
+        $personalizado->capas()->attach($capaAccesorio[0]->id);
+        $personalizado->capas()->attach($capaOjos[0]->id);
+        $personalizado->capas()->attach($capaPelo[0]->id);
+        $personalizado->capas()->attach($capaPiel[0]->id);
         //Recupero el id del ultimo personalizado creado
         $producto = DB::select("select MAX(id) id from personalizados where diseno_id = ? AND user_id = ?", [$id, auth()->id()]);
         //Lo añado a la cesta
         DB::insert('insert into cesta (user_id, personalizado_id, cantidad) values (?, ?, 1)', [auth()->id(), $producto[0]->id]);
-        return back();
+        return redirect('home');
     }
 
     public function ver($id)

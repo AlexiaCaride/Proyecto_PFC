@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contactos;
 use App\Models\Producto;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -44,5 +45,17 @@ class AdminController extends Controller
         //Guarda la informacion
         $producto->save();
         return view('anadidoStock');
+    }
+    public function mensajes(){
+        //Funcion que almacena los usuarios y los divide en grupos de 10
+        $mensajes=DB::table('contactos')->paginate(10);
+        return view('adminMensajes',['mensajes' => $mensajes]);
+    }
+    public function respondido($id){
+        //Busca el usuario por el id
+        $mensaje = Contactos::find($id);
+        //Borra el usuario
+        $mensaje->delete();
+        return view('respondido');
     }
 }

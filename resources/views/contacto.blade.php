@@ -94,8 +94,8 @@
                             style="border-radius: 15px" required>
                     </div>
                     <div class="col-6 col-sm-12 col-lg-6  my-4">
-                        <small><label class="text-uppercase" for="apellido">{{ __('Surname') }}</label></small>
-                        <input type="text" name="apellido" value="" class="form-control border-primary"
+                        <small><label class="text-uppercase" for="apellidos">{{ __('Surname') }}</label></small>
+                        <input type="text" name="apellidos" value="" class="form-control border-primary"
                             style="border-radius: 15px" required>
                     </div>
                 </div>
@@ -111,8 +111,12 @@
                         <small><label class="text-uppercase" for="mensaje">{{ __('Message') }}</label></small>
                         <textarea class="form-control border-primary" style="border-radius: 25px" name="mensaje" rows="5" required></textarea>
                         <div class="text-center">
+                        @if (auth()->check())
                             <input type="submit" name="enviar" value="{{ __('Send') }}"
                                 class="btn text-white rounded-pill px-4 bg-primary text-uppercase fs-5 my-5">
+                        @else
+                            <a href="/login" class="btn text-white rounded-pill px-4 bg-primary text-uppercase fs-5 my-5">{{ __('Send') }}</a>
+                        @endif
                         </div>
                     </div>
                 </div>

@@ -60,7 +60,7 @@
             @csrf
             <div class="my-4">
                 <br>
-                <h2 class="text-primary">{{ $camiseta->imagen }}</h2>
+                <h2 class="text-primary text-uppercase">{{ $camiseta->imagen }}</h2>
                 <label for="talla" class="fs-4">{{ __('Size') }}</label>
                 <select class="form-select" name="talla" id="talla">
                     <option value="seleccionar">{{ __('Select') }}</option>

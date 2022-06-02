@@ -79,6 +79,10 @@ Route::get('/administrar/usuarios/{id}', [AdminController::class, 'borrado'])->m
 Route::get('/administrar/productos',[AdminController::class, 'anadir'])->middleware('auth')->middleware('admin');
 //Ruta que añade stock al producto
 Route::post('/administrar/productos/{id}', [AdminController::class, 'anadido'])->middleware('auth')->middleware('admin');
+//Ruta para administrar mensajes de contacto
+Route::get('/administrar/contacto',[AdminController::class, 'mensajes'])->name('mensajes')->middleware('auth')->middleware('admin');
+//Ruta que borra los mensajes de contacto
+Route::get('/administrar/contacto/{id}', [AdminController::class, 'respondido'])->middleware('auth')->middleware('admin');
 
 //RUTAS DE USUARIOS
 //Ruta para ver el perfil del usuario
@@ -92,10 +96,16 @@ Route::post('/perfil/editar/{id}',[PerfilController::class, 'editado'])->middlew
 Route::get('/crear',[DisenosController::class, 'ver']);
 //Ruta del editor de diseños
 Route::get('/crear/{id}',[DisenosController::class, 'personalizar'])->middleware('auth');
-//Ruta que muestra el resultado de el diseño personalizado
+//Ruta que guarda el resultado de la personalización y redirige al paso dos
 Route::post('/crear/{id}',[DisenosController::class, 'resultado'])->middleware('auth');
-//Ruta que añade el diseño al carrito
-Route::post('/crear/anadir/{id}',[CestaController::class, 'anadirDiseno'])->middleware('auth');
+//Ruta que muestra el paso dos de la personalización
+Route::get('/crear/paso2/{id}',[DisenosController::class, 'datosPaso2'])->name('paso2')->middleware('auth');
+//Ruta que almacena tanto el resultado del diseño como el tipo de producto donde se aplica y redirige al paso 3
+Route::post('/crear/paso2/{id}',[DisenosController::class, 'paso2'])->middleware('auth');
+//Ruta que confirma si quieres añadir al carrit la personalización
+Route::get('/crear/paso3/{id}',[DisenosController::class, 'datosPaso3'])->name('paso3')->middleware('auth');
+//Ruta que añade el diseño al carrito (paso 3)
+Route::post('/crear/paso3/{id}',[CestaController::class, 'anadirDiseno'])->middleware('auth');
 
 //RUTAS DE LA CESTA
 //Ruta que muestra la cesta

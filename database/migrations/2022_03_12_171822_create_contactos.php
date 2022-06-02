@@ -15,11 +15,13 @@ class CreateContactos extends Migration
     {
         Schema::create('contactos', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('user_id')->unsigned();
             $table->string('nombre');
             $table->string('apellidos');
             $table->string('email');
             $table->string('mensaje');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

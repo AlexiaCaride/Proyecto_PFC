@@ -58,12 +58,12 @@
                                 @endforeach
                                 @foreach ($disenos as $diseno)
                                     <tr>
-                                        <td><img src="{{ URL::asset('imagenes/disenos/' . $diseno->imagen . '.png') }}"
+                                        <td><img src="{{ URL::asset('productos/personalizado/diseño.jpg') }}"
                                                 class="img-fluid img-thumbnail" width="100px"></td>
                                         <td class="align-middle text-center"><input type="number"
                                                 class="form-control border-primary bg-light" style="width: 75px"
                                                 value="{{ $diseno->cantidad }}" readonly></td>
-                                        <td class="align-middle text-center">{{ $disen->precio }}€/ud</td>
+                                        <td class="align-middle text-center">{{ $diseno->precio }}€/ud</td>
                                         <td class="align-middle text-end"><button
                                                 class="btn text-white rounded-pill px-4 py-0 bg-primary text-uppercase fs-5"><a
                                                     class="text-white text-decoration-none"

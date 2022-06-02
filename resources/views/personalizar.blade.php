@@ -37,7 +37,7 @@
                                         @if ($capa->tipo == 'accesorio')
                                             <button class="btn border-primary mx-2"
                                                 onclick="document.getElementById('{{ $capa->tipo }}').src='{{ URL::asset('productos/personalizado/' . $capa->tipo . '/' . $capa->nombre . '.png') }}'
-                                                        document.getElementById('formaccesorio').value= '{{ $capa->tipo . '/' . $capa->nombre . '.png'}}'">
+                                                        document.getElementById('formaccesorio').value= '{{ $capa->tipo . '/' . $capa->nombre}}'">
                                                 <img src={{ URL::asset('productos/personalizado/' . $capa->tipo . '/' . $capa->nombre . '.png') }}
                                                     width="75px" class="img-fluid">
                                             </button>
@@ -49,7 +49,7 @@
                                         @if ($capa->tipo == 'ojos')
                                             <button class="btn border-primary mx-2"
                                                 onclick="document.getElementById('{{ $capa->tipo }}').src='{{ URL::asset('productos/personalizado/' . $capa->tipo . '/' . $capa->nombre . '.png') }}'
-                                                        document.getElementById('formojos').value= '{{ $capa->tipo . '/' . $capa->nombre . '.png'}}'">
+                                                        document.getElementById('formojos').value= '{{ $capa->tipo . '/' . $capa->nombre}}'">
                                                 <img src={{ URL::asset('productos/personalizado/' . $capa->tipo . '/' . $capa->nombre . '.png') }}
                                                     width="75px" class="img-fluid">
                                             </button>
@@ -61,7 +61,7 @@
                                         @if ($capa->tipo == 'pelo')
                                             <button class="btn border-primary mx-2"
                                                 onclick="document.getElementById('{{ $capa->tipo }}').src='{{ URL::asset('productos/personalizado/' . $capa->tipo . '/' . $capa->nombre . '.png') }}'
-                                                        document.getElementById('formpelo').value= '{{ $capa->tipo . '/' . $capa->nombre . '.png'}}'">
+                                                        document.getElementById('formpelo').value= '{{ $capa->tipo . '/' . $capa->nombre}}'">
                                                 <img src={{ URL::asset('productos/personalizado/' . $capa->tipo . '/' . $capa->nombre . '.png') }}
                                                     width="75px" class="img-fluid">
                                             </button>
@@ -73,7 +73,7 @@
                                         @if ($capa->tipo == 'piel')
                                             <button class="btn border-primary mx-2"
                                                 onclick="document.getElementById('{{ $capa->tipo }}').src='{{ URL::asset('productos/personalizado/' . $capa->tipo . '/' . $capa->nombre . '.png') }}'
-                                                        document.getElementById('formpiel').value= '{{ $capa->tipo . '/' . $capa->nombre . '.png'}}'">
+                                                        document.getElementById('formpiel').value= '{{ $capa->tipo . '/' . $capa->nombre}}'">
                                                 <img src={{ URL::asset('productos/personalizado/' . $capa->tipo . '/' . $capa->nombre . '.png') }}
                                                     width="75px" class="img-fluid">
                                             </button>
@@ -91,10 +91,10 @@
         <div class="d-flex justify-content-center">
             <form method="POST" action="/crear/{{ $diseno->id }}">
                 @csrf
-                <input type="hidden" name="accesorio" id="formaccesorio" value="accesorio/1.png">
-                <input type="hidden" name="ojos" id="formojos" value="ojos/1.png">
-                <input type="hidden" name="pelo" id="formpelo" value="pelo/1.png">
-                <input type="hidden" name="piel" id="formpiel" value="piel/1.png">
+                <input type="hidden" name="accesorio" id="formaccesorio" value="accesorio/1">
+                <input type="hidden" name="ojos" id="formojos" value="ojos/1">
+                <input type="hidden" name="pelo" id="formpelo" value="pelo/1">
+                <input type="hidden" name="piel" id="formpiel" value="piel/1">
                 <input type="submit" value="{{ __("Next")}}" class="btn text-white rounded-pill px-4 py-0 bg-primary text-uppercase fs-5 mb-5">
             </form>
         </div>
