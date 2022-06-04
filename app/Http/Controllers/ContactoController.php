@@ -15,7 +15,8 @@ class ContactoController extends Controller
         return view('contacto');
     }
     /**
-     * @param array $mensaje Creo un nuevo Cotacto
+     * @param Request $request
+     * @var array $mensaje Creo un nuevo Cotacto
      * @return view Devuelve la vista 'datosContacto'
      */
     public function depurar(Request $request)

@@ -13,14 +13,16 @@ use Illuminate\Validation\Rule;
 class CestaController extends Controller
 {
     /**
-     * @param string $color Almacena el requets del select de color
-     * @param string $talla Almacena el requets del select de talla
-     * @param array $imagen Almacena el id de todos los productos que coincidan con la imagen
-     * @param string $error Almacena el mensaje de error
-     * @param array $producto Almacena todos os productos que tienen el mismo color y talla que el nombre de la imagen
-     * @param array $stock Almacena el stock del producto que coincida con talla, color, imagen e id
-     * @param array $compruebaCesta Almacena el prodcuto en la cesta del usuario
-     * @param int $cantidad Almacena la cantidad de productos pedidos
+     * @param mixed $img
+     * @param Request $request
+     * @var string $color Almacena el request del select de color
+     * @var string $talla Almacena el request del select de talla
+     * @var array $imagen Almacena el id de todos los productos que coincidan con la imagen
+     * @var string $error Almacena el mensaje de error
+     * @var array $producto Almacena todos os productos que tienen el mismo color y talla que el nombre de la imagen
+     * @var array $stock Almacena el stock del producto que coincida con talla, color, imagen e id
+     * @var array $compruebaCesta Almacena el prodcuto en la cesta del usuario
+     * @var int $cantidad Almacena la cantidad de productos pedidos
      * @return back Devuelve a la página interior, a puede devlver con error
      */
     public function anadirCamiseta($img, Request $request)
@@ -66,13 +68,15 @@ class CestaController extends Controller
         } else return back()->with('error', $error);
     }
     /**
-     * @param string $tamano Almacena el requets del select de tamano
-     * @param array $imagen Almacena el id de todos los productos que coincidan con la imagen
-     * @param string $error Almacena el mensaje de error
-     * @param array $producto Almacena todos os productos que tienen el mismo color y talla que el nombre de la imagen
-     * @param array $stock Almacena el stock del producto que coincida con el tamaño, imagen e id
-     * @param array $compruebaCesta Almacena el prodcuto en la cesta del usuario
-     * @param int $cantidad Almacena la cantidad de productos pedidos
+     * @param mixed $img
+     * @param Request $request
+     * @var string $tamano Almacena el requets del select de tamano
+     * @var array $imagen Almacena el id de todos los productos que coincidan con la imagen
+     * @var string $error Almacena el mensaje de error
+     * @var array $producto Almacena todos os productos que tienen el mismo color y talla que el nombre de la imagen
+     * @var array $stock Almacena el stock del producto que coincida con el tamaño, imagen e id
+     * @var array $compruebaCesta Almacena el prodcuto en la cesta del usuario
+     * @var int $cantidad Almacena la cantidad de productos pedidos
      * @return back Devuelve a la página interior, la puede devlver con error
      */
     public function anadirPrint($img, Request $request)
@@ -115,20 +119,22 @@ class CestaController extends Controller
         } else return back()->with('error', $error);
     }
     /**
-     * @param array $accesorio Almacena el valor del requets del input 'accesorio'
-     * @param array $arrayAccesorio Almacena e valor de $accesorio dividido en dos arrays
-     * @param array $ojos Almacena el valor del requets del input 'ojos'
-     * @param array $arrayOjos Almacena e valor de $ojos dividido en dos arrays
-     * @param array $pelo Almacena el valor del requets del input 'pelo'
-     * @param array $arrayPelo Almacena e valor de $pelo dividido en dos arrays
-     * @param array $piel Almacena el valor del requets del input 'piel'
-     * @param array $arrayPiel Almacena e valor de $piel dividido en dos arrays
-     * @param array $capaAccesorio Almacena el id de la capa que coincida con $arrayAccesorio[0] y $arrayAccesorio[1]
-     * @param array $capaOjos Almacena el id de la capa que coincida con $arrayOjos[0] y $arrayOjos[1]
-     * @param array $capaPelo Almacena el id de la capa que coincida con $arrayPelo[0] y $arrayPelo[1]
-     * @param array $capaPiel Almacena el id de la capa que coincida con $arrayPiel[0] y $arrayPiel[1]
-     * @param array $personalizado Añade los datos de las capas a la base de datos
-     * @param int $producto Recupera el id de el ultimo personalizado almacenado en la  base de datos
+     * @param mixed $id
+     * @param Request $requets
+     * @var array $accesorio Almacena el valor del requets del input 'accesorio'
+     * @var array $arrayAccesorio Almacena e valor de $accesorio dividido en dos arrays
+     * @var array $ojos Almacena el valor del requets del input 'ojos'
+     * @var array $arrayOjos Almacena e valor de $ojos dividido en dos arrays
+     * @var array $pelo Almacena el valor del requets del input 'pelo'
+     * @var array $arrayPelo Almacena e valor de $pelo dividido en dos arrays
+     * @var array $piel Almacena el valor del requets del input 'piel'
+     * @var array $arrayPiel Almacena e valor de $piel dividido en dos arrays
+     * @var array $capaAccesorio Almacena el id de la capa que coincida con $arrayAccesorio[0] y $arrayAccesorio[1]
+     * @var array $capaOjos Almacena el id de la capa que coincida con $arrayOjos[0] y $arrayOjos[1]
+     * @var array $capaPelo Almacena el id de la capa que coincida con $arrayPelo[0] y $arrayPelo[1]
+     * @var array $capaPiel Almacena el id de la capa que coincida con $arrayPiel[0] y $arrayPiel[1]
+     * @var array $personalizado Añade los datos de las capas a la base de datos
+     * @var int $producto Recupera el id de el ultimo personalizado almacenado en la  base de datos
      * @return redirect Devuelve a la ruta de la Home
      */
     public function anadirDiseno($id, Request $request)
@@ -178,11 +184,12 @@ class CestaController extends Controller
         return redirect('home');
     }
     /**
-     * @param array $productos Recupera los productos de la cesta
-     * @param array $disenos Recupera los diseños personalizados de la cesta
-     * @param int $contP Cuenta todos los productos de la variable $productos
-     * @param int $contD Cuenta todos los diseños personalizados de la variable $diseños
-     * @param int $cont Suma las variables $contP y $contD
+     * @param mixed $id
+     * @var array $productos Recupera los productos de la cesta
+     * @var array $disenos Recupera los diseños personalizados de la cesta
+     * @var int $contP Cuenta todos los productos de la variable $productos
+     * @var int $contD Cuenta todos los diseños personalizados de la variable $diseños
+     * @var int $cont Suma las variables $contP y $contD
      * @return view Devuelve la vista 'cesta' con la variable $productos y $disenos
      */
     public function ver($id)
@@ -197,27 +204,28 @@ class CestaController extends Controller
         $cont = $contP + $contD;
         //Si el contador es 0 te manda de vuelta al inicio, si no devuelve la cesta
         if($cont==0){
-            return back();
+            return redirect('home');
         }else{
         return view('cesta', ['productos' => $productos], ['disenos' => $disenos]);
         }
     }
     /**
-     * @param $producto Recupera el prodcuto de la cesta que tiene el mismo id
+     * @param mixed $id
+     * @var $producto Recupera el prodcuto de la cesta que tiene el mismo id
      * @return back Devuelve la página anterior
      */
     public function borrar($id)
-    {
+    {   
         //Recupera la cesta cuando coincida con el id y lo borra
         $producto = DB::table("cesta")->where('id', '=', $id);
         $producto->delete();
         return back();
     }
     /**
-     * @param array $pedidos Crea un nuevo pedido
-     * @param array $productos Recupera los productos de la cesta del usuario
-     * @param array $personalizado Recupera los diseños de la cesta del usuario
-     * @param array $cesta Recupera los datos de la cesta
+     * @var array $pedidos Crea un nuevo pedido
+     * @var array $productos Recupera los productos de la cesta del usuario
+     * @var array $personalizado Recupera los diseños de la cesta del usuario
+     * @var array $cesta Recupera los datos de la cesta
      * @return redirect Redirige a la ruta Pago
      */
     public function pagar($id, Request $request)

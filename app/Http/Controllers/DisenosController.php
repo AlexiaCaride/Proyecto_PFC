@@ -11,7 +11,7 @@ use Illuminate\Validation\Rule;
 class DisenosController extends Controller
 {
     /**
-     * @param array $disenos Recupera los diseños de la base de datos
+     * @var array $disenos Recupera los diseños de la base de datos
      * @return view Devuelve la vista 'disenos' con la variable $disenos
      */
     public function ver()
@@ -21,8 +21,9 @@ class DisenosController extends Controller
         return view('disenos', ['disenos' => $disenos]);
     }
     /**
-     * @param array $diseno Recupera el diseno que tenga el mismo id
-     * @param array $capas Recupera las capas del diseño
+     * @param mixed $id
+     * @var array $diseno Recupera el diseno que tenga el mismo id
+     * @var array $capas Recupera las capas del diseño
      * @return view Devuelve la vista 'personalizar' con las variables $diseno y $capa
      */
     public function personalizar($id)
@@ -34,10 +35,12 @@ class DisenosController extends Controller
         return view('personalizar', ['capas' => $capas], ['diseno' => $diseno]);
     }
     /**
-     * @param string $accesorio recupera el request del input
-     * @param string $ojos recupera el request del input
-     * @param string $pelo recupera el request del input
-     * @param string $piel recupera el request del input
+     * @param mixed $id
+     * @param Request $request
+     * @var string $accesorio recupera el request del input
+     * @var string $ojos recupera el request del input
+     * @var string $pelo recupera el request del input
+     * @var string $piel recupera el request del input
      * @return redirect Redirige a Paso2 con las variables $id, $accesorio, $ojos, $pelo y $piel a modo de array
      */
     public function resultado($id, Request $request)
@@ -50,10 +53,12 @@ class DisenosController extends Controller
         return redirect()->route('paso2', ['id' => $id, 'accesorio' => $accesorio, 'ojos' => $ojos, 'pelo' => $pelo, 'piel' => $piel]);
     }
     /**
-     * @param string $accesorio recupera el requets del array
-     * @param string $ojos recupera el request del array
-     * @param string $pelo recupera el request del array
-     * @param string $piel recupera el request del array
+     * @param mixed $id
+     * @param Request $request
+     * @var string $accesorio recupera el requets del array
+     * @var string $ojos recupera el request del array
+     * @var string $pelo recupera el request del array
+     * @var string $piel recupera el request del array
      * @return view Devuelve la vista 'personalizacion_paso2' con las variables $id, $accesorio, $ojos, $pelo y $piel
      */
     public function datosPaso2($id, Request $request)
@@ -65,11 +70,13 @@ class DisenosController extends Controller
         return view('personalizacion_paso2', ['id' => $id, 'accesorio' => $accesorio, 'ojos' => $ojos, 'pelo' => $pelo, 'piel' => $piel]);
     }
     /**
-     * @param string $accesorio recupera el requets del input
-     * @param string $ojos recupera el request del input
-     * @param string $pelo recupera el request del input
-     * @param string $piel recupera el request del input
-     * @param array $producto Alamcena la información del formulario con el request
+     * @param mixed $id
+     * @param Request $request
+     * @var string $accesorio recupera el requets del input
+     * @var string $ojos recupera el request del input
+     * @var string $pelo recupera el request del input
+     * @var string $piel recupera el request del input
+     * @var array $producto Alamcena la información del formulario con el request
      * @return redirect redirige la ruta Paso3 con las variables $id, $accesorio, $ojos, $pelo, $piel y $producto
      */
     public function paso2($id, Request $request)
@@ -99,11 +106,13 @@ class DisenosController extends Controller
         return Redirect::route('paso3', ['id' => $id, 'accesorio' => $accesorio, 'ojos' => $ojos, 'pelo' => $pelo, 'piel' => $piel, 'producto' => $producto]);
     }
     /**
-     * @param string $accesorio recupera el requets del array
-     * @param string $ojos recupera el request del array
-     * @param string $pelo recupera el request del array
-     * @param string $piel recupera el request del array
-     * @param array $producto recupera el request del array
+     * @param mixed $id
+     * @param Request $request
+     * @var string $accesorio recupera el requets del array
+     * @var string $ojos recupera el request del array
+     * @var string $pelo recupera el request del array
+     * @var string $piel recupera el request del array
+     * @var array $producto recupera el request del array
      * @return view Devuelve la vista 'personalizacion_paso3' con las variables $id, $accesorio, $ojos, $pelo, $piel y producto
      */
     public function datosPaso3($id, Request $request)

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class CamisetasController extends Controller
 {
     /**
-     * @param array $productos Almacena todos los productos que tengan el mismo id que las camisetas
+     * @var array $productos Almacena todos los productos que tengan el mismo id que las camisetas
      * @return view Devuelve la vista 'camiseta' con la variable $camisetas
      */
     public function ver(){
@@ -19,7 +19,8 @@ class CamisetasController extends Controller
         return view('camisetas',array('productos' => $productos));
     }
     /**
-     * @param array $camisetas Almacena todas los productos y camisetas que tengan la misma imagen
+     * @param mixed $img
+     * @var array $camisetas Almacena todas los productos y camisetas que tengan la misma imagen
      * @return view Devuelve la vista 'camiseta' con la variable $camisetas
      */
     public function verCamiseta($img){

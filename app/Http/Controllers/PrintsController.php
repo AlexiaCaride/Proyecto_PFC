@@ -10,7 +10,7 @@ use App\Models\Producto;
 class PrintsController extends Controller
 {
     /**
-     * @param array $productos Almacena todos los productos que tengan el mismo id que las prints
+     * @var array $productos Almacena todos los productos que tengan el mismo id que las prints
      * @return view Devuelve la vista 'prints' con la variable $prints
      */
     public function ver()
@@ -20,7 +20,8 @@ class PrintsController extends Controller
         return view('prints',array('productos' => $productos));
     }
     /**
-     * @param array $prints Almacena todas los productos y prints que tengan la misma imagen
+     * @param mixed $img
+     * @var array $prints Almacena todas los productos y prints que tengan la misma imagen
      * @return view Devuelve la vista 'print' con la variable $prints
      */
     public function verPrint($img)

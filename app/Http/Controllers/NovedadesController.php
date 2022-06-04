@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class NovedadesController extends Controller
 {
     /**
-     * @param array $datos Recupera las novedades en grupos de 3
+     * @var array $datos Recupera las novedades en grupos de 3
      * @return view Devuelve la vista 'novedades' con la variable $datos
      */
     public function ver()
@@ -20,7 +20,8 @@ class NovedadesController extends Controller
         return view('novedades', ['datos' => $datos]);
     }
     /**
-     * @param array $noticia busca la noticia con el mismo id
+     * @param mixed $id
+     * @var array $noticia busca la noticia con el mismo id
      * @return view Devuelve la vista 'noticia' con la variable $noticia
      */
     public function noticia($id){
@@ -36,10 +37,11 @@ class NovedadesController extends Controller
         return view('anadir');
     }
     /**
-     * @param array $novedades Crea una nueva Novedad
-     * @param date $actu Almacena la fecha actual
-     * @param array $id_novedad Recupera la última Novedad escrita
-     * @param array $novedad Renombra la imgan de la última notica escrita
+     * @param Request $request
+     * @var array $novedades Crea una nueva Novedad
+     * @var date $actu Almacena la fecha actual
+     * @var array $id_novedad Recupera la última Novedad escrita
+     * @var array $novedad Renombra la imgan de la última notica escrita
      * @return view Devuelve la vista 'datosAnadir'
      */
     public function anadido(Request $request){
@@ -68,6 +70,10 @@ class NovedadesController extends Controller
         $novedad->save();
         return view('datosAnadir');
     }
+    /**
+     * @param Request $request
+     * "return response json
+     */
     public function upload(Request $request)
     {
         //Mueve la imagen a la ruta

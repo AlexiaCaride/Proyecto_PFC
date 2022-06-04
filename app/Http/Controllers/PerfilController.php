@@ -11,7 +11,8 @@ use Illuminate\Validation\Rule;
 class PerfilController extends Controller
 {
     /**
-     * @param array $perfil Recupera el perfil por el id
+     * @param mixed $id
+     * @var array $perfil Recupera el perfil por el id
      * @return view Devuelve la vista 'perfil' con la variable $perfil
      */
     public function ver($id){
@@ -20,9 +21,10 @@ class PerfilController extends Controller
         return view('perfil',array('perfil' => $perfil));
     }
     /**
-     * @param array $perfil Crea un nuevo Perfil
-     * @param int $id Recupera el perfil del usuario activo
-     * @param date $fecha Recuepera la fecha actual
+     * @param Request $request
+     * @var array $perfil Crea un nuevo Perfil
+     * @var int $id Recupera el perfil del usuario activo
+     * @var date $fecha Recuepera la fecha actual
      * @return redirect Redirige a la ruta Home
      */
     public function crear(Request $request)
@@ -53,7 +55,8 @@ class PerfilController extends Controller
         return redirect('home');
     }
     /**
-     * @param array $perfil Busca el perfil por el id
+     * @param mixed $id
+     * @var array $perfil Busca el perfil por el id
      * @return view Devuelve la vista 'editarPerfil' con la variable $perfil
      */
     public function editar($id){
@@ -62,8 +65,10 @@ class PerfilController extends Controller
         return view('editarPerfil',array('perfil' => $perfil));
     }
     /**
-     * @param array $perfil Busca el perfil por el id
-     * @param date $actu Almacena la fecha actual
+     * @param mixed $id
+     * @param Request $request
+     * @var array $perfil Busca el perfil por el id
+     * @var date $actu Almacena la fecha actual
      * @return view Devuelve la vista 'perfilEditado'
      */
     public function editado($id,Request $request)
@@ -77,7 +82,7 @@ class PerfilController extends Controller
             'direccion' => ['required', 'string', 'max:100'],
             'cPostal' => ['required','min:11111','max:99999','numeric'],
         ]);
-        //Busco el erfil por el id y lo actualizo
+        //Busco el perfil por el id y lo actualizo
             $perfil=Perfils::find($id);
             $actu= Carbon::now();
             $perfil->nombre = $request->nombre;

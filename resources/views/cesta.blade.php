@@ -75,7 +75,8 @@
                                     <td colspan="2" class="align-middle">
                                         <p class="mb-4 text-secondary fs-1 mt-3">Total: @php echo number_format($total, 2);@endphp€</p>
                                     </td>
-                                    <td colspan="2" class="align-middle text-end"><input type="hidden" id="total" name="total" value="@php echo number_format($total, 2); @endphp">
+                                    <td colspan="2" class="align-middle text-end"><input type="hidden" id="total"
+                                            name="total" value="@php echo number_format($total, 2); @endphp">
                                         <input type="submit"
                                             class="btn text-white rounded-pill px-5 py-0 bg-primary text-uppercase fs-5 m t-3"
                                             name="pagar" value="{{ __('Pay') }}">
@@ -84,7 +85,6 @@
                             </tbody>
                         </table>
                     </div>
-
                     </form>
                 </div>
             </div>
