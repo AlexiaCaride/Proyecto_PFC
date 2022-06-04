@@ -17,10 +17,10 @@ class CreatePersonalizados extends Migration
             $table->id();
             $table->bigInteger('diseno_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
-            $table->string('talla');
-            $table->string('color');
+            $table->string('talla')->nullable();
+            $table->string('color')->nullable();
             $table->decimal('precio');
-            $table->string('tamano');
+            $table->string('tamano')->nullable();
             $table->timestamps();
             $table->foreign('diseno_id')->references('id')->on('disenos')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

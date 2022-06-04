@@ -84,7 +84,6 @@
                     processData: false,
                     success: (data) => {
                         $('#image-upload')[0].reset();
-                        alert('La imagen se subió correctamente');
                     },
                     error: function(data) {
                         console.log(data);

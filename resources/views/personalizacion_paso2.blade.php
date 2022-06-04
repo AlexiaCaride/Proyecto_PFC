@@ -3,6 +3,13 @@
     Diseños
 @endsection
 @section('corpo')
+<div class="mt-3 mb-2">
+    <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-sm btn-secondary rounded-pill mx-5" style="width: 2rem; height:2rem;">1</button>
+        <button type="button" class="btn btn-sm btn-primary text-white rounded-pill mx-5" style="width: 2rem; height:2rem;">2</button>
+        <button type="button" class="btn btn-sm btn-secondary rounded-pill mx-5" style="width: 2rem; height:2rem;">3</button>
+    </div>
+</div>
     <form action="/crear/paso2/{{ $id }}" method="post">
         @csrf
         <div class="container-fluid py-5 my-3" style="background-image: url({{ asset('imagenes/miniBanner3.png') }})">
@@ -64,6 +71,7 @@
     </form>
     <script>
         function radioCam() {
+            //Cambio la visibilidad de los divs en base al check seleccionado
             if (document.getElementById('camiseta').checked) {
                 document.getElementById('checklamina').className = 'd-none';
                 document.getElementById('checkcamiseta').className = 'd-block';
@@ -71,6 +79,7 @@
         }
 
         function radioLam() {
+            //Cambio la visibilidad de los divs en base al check seleccionado
             if (document.getElementById('lamina').checked) {
                 document.getElementById('checklamina').className = 'd-block';
                 document.getElementById('checkcamiseta').className = 'd-none';

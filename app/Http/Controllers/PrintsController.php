@@ -9,12 +9,20 @@ use App\Models\Producto;
 
 class PrintsController extends Controller
 {
+    /**
+     * @param array $productos Almacena todos los productos que tengan el mismo id que las prints
+     * @return view Devuelve la vista 'prints' con la variable $prints
+     */
     public function ver()
     {
         //Recupero los productos que sean prints ordenados por imagen
         $productos=Producto::join("prints","prints.producto_id", "=", "productos.id")->orderby('productos.imagen')->get();
         return view('prints',array('productos' => $productos));
     }
+    /**
+     * @param array $prints Almacena todas los productos y prints que tengan la misma imagen
+     * @return view Devuelve la vista 'print' con la variable $prints
+     */
     public function verPrint($img)
     {   
         //Almaceno los datos de productos y prints unidos por el id cuando coincida la imagen

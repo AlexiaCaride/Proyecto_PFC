@@ -3,6 +3,13 @@
     Diseños
 @endsection
 @section('corpo')
+<div class="mt-3 mb-2">
+    <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-sm btn-secondary rounded-pill mx-5" style="width: 2rem; height:2rem;">1</button>
+        <button type="button" class="btn btn-sm btn-secondary rounded-pill mx-5" style="width: 2rem; height:2rem;">2</button>
+        <button type="button" class="btn btn-sm btn-primary text-white rounded-pill mx-5" style="width: 2rem; height:2rem;">3</button>
+    </div>
+</div>
     <div class="container-fluid py-5 my-3" style="background-image: url({{ asset('imagenes/miniBanner3.png') }})">
         <div class="container tarjeta py-5 my-5">
             <div class="d-flex justify-content-center">
@@ -23,7 +30,7 @@
                     </section>
                 </div>
                 <div class="col-6 col-sm-12 col-lg-6">
-                    <h2 class="text-primary text-uppercase mt-5 mb-5">{{ __("You're almost there")}}</h2>
+                    <h2 class="text-primary text-uppercase mt-5 mb-5">{{ __("You're almost there") }}</h2>
                     @foreach ($producto as $datos)
                         <p class="fs-4">Tipo de producto: {{ $datos[2] }}</p>
                         @if ($datos[2] == 'Camiseta')

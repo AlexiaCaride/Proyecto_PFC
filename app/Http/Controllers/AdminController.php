@@ -11,11 +11,19 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
+    /**
+     * @param array $usuarios Almacena los usuarios de la base de datos
+     * @return view devuleve la vista 'adminUsuarios' y la variable $usuarios
+     */
     public function borrar(){
         //Funcion que almacena los usuarios y los divide en grupos de 10
         $usuarios=DB::table('users')->paginate(10);
         return view('adminUsuarios',['usuarios' => $usuarios]);
     }
+    /**
+     * @param array $usuario Almacena el usuario que tiene el mismo id
+     * @return view devuelve la vista 'borrado'
+     */
     public function borrado($id){
         //Busca el usuario por el id
         $usuario = User::find($id);
@@ -23,11 +31,23 @@ class AdminController extends Controller
         $usuario->delete();
         return view('borrado');
     }
+    /**
+     * @param array $productos Almacena todos los productos de la base de datos
+     * @return view devuelve la vista 'anadirStock' con la variable $productos
+     */
     public function anadir(){
         //Funcion que almacena los pedidos y los divide ne grupos de 10
         $productos=DB::table('productos')->paginate(10);
         return view('anadirStock',['productos' => $productos]);
     }
+    /**
+     * @param array $producto Busca el producto por el id
+     * @param array $stock Almacena el stock del producto que coincida 
+     * @param int $anadir Recupera con el request el valor puesto en el formulario que hay que añadir
+     * @param int $stockTotal Suma $anadir con el vaor de $stock
+     * @param date $actu Almacena la hora de actualización
+     * @return view Devuelve la vista 'anadidoStock'
+     */
     public function anadido($id, Request $request){
         //Busca el producto por el id
         $producto = Producto::find($id);
@@ -46,11 +66,19 @@ class AdminController extends Controller
         $producto->save();
         return view('anadidoStock');
     }
+    /**
+     * @param array $mensajes Almacena todos los mensajes de contacto de la base de datos
+     * @return view Devuelve la vista 'adminMensajes' con la variable $mensajes
+     */
     public function mensajes(){
         //Funcion que almacena los usuarios y los divide en grupos de 10
         $mensajes=DB::table('contactos')->paginate(10);
         return view('adminMensajes',['mensajes' => $mensajes]);
     }
+    /**
+     * @param array $mensaje Busca el mensaje con el mismo id
+     * @return view Devuelve la vista 'respondido'
+     */
     public function respondido($id){
         //Busca el usuario por el id
         $mensaje = Contactos::find($id);

@@ -10,12 +10,21 @@ use Illuminate\Validation\Rule;
 
 class PerfilController extends Controller
 {
+    /**
+     * @param array $perfil Recupera el perfil por el id
+     * @return view Devuelve la vista 'perfil' con la variable $perfil
+     */
     public function ver($id){
         //Recupera el perfil por el id
         $perfil=Perfils::find($id);
         return view('perfil',array('perfil' => $perfil));
     }
-
+    /**
+     * @param array $perfil Crea un nuevo Perfil
+     * @param int $id Recupera el perfil del usuario activo
+     * @param date $fecha Recuepera la fecha actual
+     * @return redirect Redirige a la ruta Home
+     */
     public function crear(Request $request)
     {
         //Valido el formulario
@@ -43,12 +52,20 @@ class PerfilController extends Controller
         
         return redirect('home');
     }
+    /**
+     * @param array $perfil Busca el perfil por el id
+     * @return view Devuelve la vista 'editarPerfil' con la variable $perfil
+     */
     public function editar($id){
         //Busco el perfil por el id
         $perfil=Perfils::find($id);
         return view('editarPerfil',array('perfil' => $perfil));
     }
-
+    /**
+     * @param array $perfil Busca el perfil por el id
+     * @param date $actu Almacena la fecha actual
+     * @return view Devuelve la vista 'perfilEditado'
+     */
     public function editado($id,Request $request)
     {
         //Valido el formulario de modificacion de perfil

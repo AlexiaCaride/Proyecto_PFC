@@ -14,9 +14,9 @@
             if(contador1==4){
                 contador1=0;
             }
-            // obtenemos un numero aleatorio entre 0 y la cantidad de imagenes que hay
+            //Obtenemos un numero aleatorio entre 0 y la cantidad de imagenes que hay
             var index1 = Math.floor((contador1));
-            // cambiamos la imagen
+            //Cambiamos la imagen
             document.getElementById("imagen1").src = imagenes1[index1];
         }
         //Array con las imagenes que se iran mostrando en la web
@@ -27,17 +27,17 @@
             if(contador2==4){
                 contador2=0;
             }
-            // obtenemos un numero aleatorio entre 0 y la cantidad de imagenes que hay
+            //Obtenemos un numero aleatorio entre 0 y la cantidad de imagenes que hay
             var index2 = Math.floor((contador2));
-            // cambiamos la imagen
+            //Cambiamos la imagen
             document.getElementById("imagen2").src = imagenes2[index2];
         }
         //Función que se ejecuta una vez cargada la página
         onload = function() {
-            // Cargamos una imagen aleatoria
+            //Cargamos una imagen aleatoria
             rotarImagenes1();
             rotarImagenes2();
-            // Indicamos que cada 5 segundos cambie la imagen
+            //Indicamos que cada 4 segundos cambie la imagen
             setInterval(rotarImagenes1, 4000);
             setInterval(rotarImagenes2, 4000);
         }

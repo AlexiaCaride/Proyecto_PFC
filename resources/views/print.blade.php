@@ -5,11 +5,15 @@
 @section('corpo')
     <script>
         function tamanoPrecio() {
+            //Recupero el valor de tamaño
             var tamano = document.getElementById("tamano").value;
+            //Si es A5 mostrará un precio de 5
             if (tamano == "A5") {
                 document.getElementById("precio").innerHTML = "5.00€";
+            //Si es A3 mostrará un precio de 15
             } else if (tamano == "A3") {
                 document.getElementById("precio").innerHTML = "15.00€";
+            //Si es A4 mostrará un precio de 10
             } else document.getElementById("precio").innerHTML = "10.00€";
         }
     </script>

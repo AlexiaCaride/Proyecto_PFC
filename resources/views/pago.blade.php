@@ -45,6 +45,7 @@
         </div>
     </div>
     <script>
+        //Valida el número de la tarjeta que tenga 16 numeros a través de una expresión regular
         function validaNumero() {
             valor = document.getElementById("numero").value;
             if (!(/^[01-9]{16}$/.test(valor))) {
@@ -54,6 +55,7 @@
             document.getElementById("errorNum").innerHTML = "";
             return true;
         }
+        //Valida el número del CVV tenga 3 numeros a través de una expresión regular
         function validaCVV() {
             valor = document.getElementById("cvv").value;
             if (!(/^[01-9]{3}$/.test(valor))) {

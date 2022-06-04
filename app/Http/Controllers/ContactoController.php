@@ -7,10 +7,17 @@ use \App\Models\Contactos;
 
 class ContactoController extends Controller
 {
+    /**
+     * @return view Devuelve la vista 'contacto'
+     */
     public function contacto()
     {
         return view('contacto');
     }
+    /**
+     * @param array $mensaje Creo un nuevo Cotacto
+     * @return view Devuelve la vista 'datosContacto'
+     */
     public function depurar(Request $request)
     {
         //Valido el formulario

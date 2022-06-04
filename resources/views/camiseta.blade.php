@@ -5,19 +5,26 @@
 @section('corpo')
     <script>
         function colorCamiseta() {
+            //Almaceno el valor de el select de color
             var color = document.getElementById("color").value;
+            //Almaceno el src de la imagen de la camiseta
             var cadena = document.getElementById("camiseta").src;
             if (color == "negro") {
+                //Si el color es negro, busca la palabra blanco en el src de la imagen
                 var blanco = cadena.indexOf("blanco");
                 if (blanco >= 0) {
+                    //Sustituye la palabra blanco por negro en la cadena
                     var result = cadena.replace("blanco", "negro");
+                    //Pone la variable cadena como el src de la imagen
                     document.getElementById("camiseta").src = result;
                 }
-            }
-            if (color == "blanco") {
+            }else if (color == "blanco") {
+                //Si el color es blanco, busca la palabra negro en el src de la imagen
                 var negro = cadena.indexOf("negro");
                 if (negro >= 0) {
+                    //Sustituye la palabra negro por blanco en la cadena
                     var result = cadena.replace("negro", "blanco");
+                    //Pone la variable cadena como el src de la imagen
                     document.getElementById("camiseta").src = result;
                 }
             }

@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class TiendaController extends Controller
 {
+    /**
+     * @param array $camisetas Recupera todos los productos que sean camisetas
+     * @param array $prints Recupera todos los productos que sean láminas
+     * @return view Devuelve la vista 'index' con las variabls $cammisetas y $prints
+     */
     public function index()
     {
         //Recupero los productos que coincidan con camisetas y con láminas

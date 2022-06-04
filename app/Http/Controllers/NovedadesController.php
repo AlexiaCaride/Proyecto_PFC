@@ -9,24 +9,39 @@ use Illuminate\Support\Facades\Auth;
 
 class NovedadesController extends Controller
 {
+    /**
+     * @param array $datos Recupera las novedades en grupos de 3
+     * @return view Devuelve la vista 'novedades' con la variable $datos
+     */
     public function ver()
     {
         //Recupero las novedades en grupos de 3
         $datos = DB::table('novedades')->orderBy('created_at', 'desc')->paginate(4);
         return view('novedades', ['datos' => $datos]);
     }
-
+    /**
+     * @param array $noticia busca la noticia con el mismo id
+     * @return view Devuelve la vista 'noticia' con la variable $noticia
+     */
     public function noticia($id){
         //Almaceno los datos de la noticia selecinada
         $noticia = Novedad::find($id);
         return view('noticia',array('noticia' => $noticia));
     }
-
+    /**
+     * @return view Devuelve la vista 'anadir'
+     */
     public function anadir()
     {
         return view('anadir');
     }
-
+    /**
+     * @param array $novedades Crea una nueva Novedad
+     * @param date $actu Almacena la fecha actual
+     * @param array $id_novedad Recupera la última Novedad escrita
+     * @param array $novedad Renombra la imgan de la última notica escrita
+     * @return view Devuelve la vista 'datosAnadir'
+     */
     public function anadido(Request $request){
         $request->validate([
             'titulo' => ['required', 'string', 'max:30'],
