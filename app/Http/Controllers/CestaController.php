@@ -195,9 +195,9 @@ class CestaController extends Controller
     public function ver($id)
     {
         //Recupero los datos de producto con la cesta
-        $productos = Producto::join("cesta", "cesta.producto_id", "=", "productos.id")->get();
+        $productos = Producto::join("cesta", "cesta.producto_id", "=", "productos.id")->where('user_id', '=', $id)->get();
         //Recupero los datos de Personalizados con el diseño y la cesta
-        $disenos = Personalizados::join('disenos', 'disenos.id', '=', 'personalizados.diseno_id')->join("cesta", "cesta.personalizado_id", "=", "personalizados.id")->get();
+        $disenos = Personalizados::join('disenos', 'disenos.id', '=', 'personalizados.diseno_id')->join("cesta", "cesta.personalizado_id", "=", "personalizados.id")->where('cesta.user_id', '=', $id)->get();
         //Hago un count para saber cuantas entradas tienen entre ambas colecciones
         $contP = $productos->count();
         $contD = $disenos->count();
